@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Text, View, StyleSheet, Alert, ScrollView, AsyncStorage } from 'react-native'
 
 import { Register, Login, LandingPatient, LandingPharmacist, Medication, AddMedication, DrugDetail, NavigationBarTop, Progress, Contacts, AddContacts, Patients, AddPatient, ContactDetail } from './src/components'
-import logic, { registerUser, login, retrieveUser, retrieveMedication, addMedication, retrieveDrug, deleteMedication, retrieveContacts } from './src/logic'
+import logic, { registerUser, login, retrieveUser, retrieveMedication, addMedication, retrieveDrug, deleteMedication, retrieveContacts, deleteContact } from './src/logic'
 
 logic.__context__.storage =AsyncStorage 
 
@@ -168,7 +168,6 @@ export default function App () {
   async function handleToPatients (){
     try{
       const _contacts = await retrieveContacts(token)
-      console.log(_contacts)
       setContacts(_contacts)
       setView('patients')
 
@@ -180,9 +179,19 @@ export default function App () {
   function handleToAddPatients (){
     setView('addPatients')
   }
-  function handleToContactDetail ({name, surname, phone}){
-    setContactData({name, surname, phone})
+  function handleToContactDetail ({name, surname, phone, id}){
+    setContactData({name, surname, phone, id})
     setView('contactDetail')
+  }
+
+  async function handleDeleteContact({id}) {
+    try { 
+      await deleteContact(token, id)
+      handleToContacts()
+
+    }catch({message}){
+      //TODO
+    }
   }
 
   return(<View style={styles.container}>
@@ -202,7 +211,7 @@ export default function App () {
       { view === 'addContacts' && <AddContacts/>}
       { view === 'patients' && <Patients contacts ={ contacts } toAdd={handleToAddPatients}/> }
       { view === 'addPatients' && <AddPatient user={user}/> }
-      { view === 'contactDetail' && <ContactDetail contactData={contactData}/>}
+      { view === 'contactDetail' && <ContactDetail contactData={contactData} toDelete={handleDeleteContact}/>}
     </ScrollView>
 
     </View>

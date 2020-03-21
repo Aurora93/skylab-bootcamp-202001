@@ -10,5 +10,6 @@ module.exports = {
     retrieveDrug: require('./retrieve-drug'),
     deleteMedication: require('./delete-medication'),
     retrieveContacts: require('./retrieve-contacts'),
-    addContact: require('./add-contact')
+    addContact: require('./add-contact'),
+    deleteContact: require('./delete-contact')
 }

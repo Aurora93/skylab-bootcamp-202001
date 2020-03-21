@@ -25,9 +25,9 @@ function Contacts ({toAdd, onContact, contacts}) {
                         renderItem={({item})=>(
                             <ListItem 
                                 onPress ={()=> {
-                                    const {name, surname, phone} = item
+                                    const {name, surname, phone, id} = item
                                     
-                                    onContact({name, surname, phone})
+                                    onContact({name, surname, phone, id})
                                 }}
                                 title ={item.name.toString() }
                                 titleStyle = {{

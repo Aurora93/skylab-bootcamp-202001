@@ -13,7 +13,8 @@ const {
     retrieveProgress,
     retrieveDrug,
     retrieveContacts,
-    addContact
+    addContact,
+    deleteContact
 } = require('./handlers')
 
 const { jwtVerifierMidWare } = require('../mid-wares')
@@ -50,5 +51,7 @@ router.get('/drug/:drugName', retrieveDrug)
 router.get('/users/contacts', jwtVerifierMidWare, retrieveContacts)
 
 router.post('/users/add-contact', [jwtVerifierMidWare, jsonBodyParser], addContact)
+
+router.delete('/users/contact/:id', jwtVerifierMidWare, deleteContact)
 
 module.exports = router
