@@ -99,6 +99,7 @@ function App() {
     //if(user) {
     const interval = setInterval(async () => {
       let alarms = await AsyncStorage.getItem('alarms')
+      console.log(alarms)
 
       if (alarms) {
         alarms = JSON.parse(alarms)
@@ -134,6 +135,7 @@ function App() {
 
             if (!sounded && nowHour >= time) {
               alarms[drug][time] = true
+              console.log('alarms')
 
               await AsyncStorage.setItem('alarms', JSON.stringify(alarms))
 

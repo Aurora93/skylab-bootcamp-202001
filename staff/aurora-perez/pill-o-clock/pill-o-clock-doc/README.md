@@ -18,7 +18,7 @@ Also have the option to register not only like a patient but pharmacist too. The
 - Logout
 
 ## 👩‍⚕️ Use-Cases 👩‍⚕️
-![](./images/use-case-diagram.png)
+![](./images/use-case-diagram.jpg)
 
 # 💊 Technical description 💊
 ## Flow chart
