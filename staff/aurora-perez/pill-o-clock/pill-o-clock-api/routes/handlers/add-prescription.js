@@ -8,7 +8,16 @@ module.exports = (req, res) => {
         addPrescription(id, drugId, time) 
             .then(() => res.status(201).end())
             .catch(error => {
-                let status = 400
+                 let status = 400
+
+                if (error instanceof TypeError || error instanceof ContentError)
+                    status = 406 // not acceptable
+
+                if (error instanceof NotFoundError)
+                    status = 404
+
+                if (error instanceof NotAllowedError)
+                    status = 401
 
                 const { message } = error
 

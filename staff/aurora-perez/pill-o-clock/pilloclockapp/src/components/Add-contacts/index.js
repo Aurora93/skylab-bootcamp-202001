@@ -11,7 +11,6 @@ export default class ScanScreen extends Component {
 
   onSuccess (id) {
     (async () => {
-      console.log(id)
       try{
         await addContact(id)
         Alert.alert('Contact added!')

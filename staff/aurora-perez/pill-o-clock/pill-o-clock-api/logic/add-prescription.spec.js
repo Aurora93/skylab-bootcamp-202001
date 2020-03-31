@@ -46,7 +46,7 @@ describe('addPrescription', () => {
                 .then(() => User.findById(_id).lean() )
                 .then((user) => {
                     expect(user).to.exist 
-                    debugger
+                    
                     expect(user.prescription[0]).to.exist
                     expect(user.prescription[0].times[0]).to.equal(time[0])
                 })

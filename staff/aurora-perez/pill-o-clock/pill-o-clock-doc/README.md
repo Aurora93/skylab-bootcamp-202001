@@ -1,9 +1,10 @@
 # ⏰💊 Pill O'Clock 💊⏰
+![](https://media.giphy.com/media/1k1ytTA4AHJnp7OvUJ/giphy.gif)
+
 Pill O'Clock is a medication reminder mobile app that will display an alarm system. Also you can check your progress in a calendar based in different colors. If you take all your medicines correctly in a day you will have a green color this day. If you not you will have a red color. Also, there are intermediate colors.
 
 Also have the option to register not only like a patient but pharmacist too. The pharmacist can see the progress of their patients.
 
-![](https://media.giphy.com/media/1k1ytTA4AHJnp7OvUJ/giphy.gif)
 
 # 💊 Functional description 💊
 - User register and login

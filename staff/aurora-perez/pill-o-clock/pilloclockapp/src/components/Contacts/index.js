@@ -4,7 +4,6 @@ import {List, ListItem } from 'react-native-elements'
 import styles from './styles'
 
 function Contacts ({toAdd, onContact, contacts}) {
-    console.log(contacts)
 
     return (<>
         
@@ -26,7 +25,6 @@ function Contacts ({toAdd, onContact, contacts}) {
                         renderItem={({item})=>(
                             <ListItem 
                                 onPress ={()=> {
-                                    console.log(item)
                                     const {name, surname, phone, email} = item
                                     
                                     onContact({name, surname, phone, email})

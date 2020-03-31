@@ -8,7 +8,6 @@ import moment from 'moment'
 
 function Progress ({progress, user}) {
     const [ markedDates, setMarketDates] = useState()
-    console.log('progress '+progress)
 
     function colorCheck (check) {
         let index

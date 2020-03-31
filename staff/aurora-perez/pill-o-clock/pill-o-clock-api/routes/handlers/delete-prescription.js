@@ -3,7 +3,7 @@ const { NotAllowedError, ContentError, NotFoundError } = require('pill-o-clock-e
 
 module.exports = (req, res) => {
     const { params: { drugId }, payload: { sub: id } } = req
-    debugger
+
     try {
         deletePrescription(id, drugId)
             .then(() => res.status(200).end())

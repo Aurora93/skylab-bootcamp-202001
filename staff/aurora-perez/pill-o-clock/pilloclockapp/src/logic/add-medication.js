@@ -45,7 +45,7 @@ module.exports = function (drugId, time) {
             const { error } = await response.json()
 
             if (status === 401) {
-                throw new NotAllowedError(error)
+                throw new NotAllowedError('Ooops! You already have that medicine!')
             }
 
             if (status === 404) {

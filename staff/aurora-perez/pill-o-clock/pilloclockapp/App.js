@@ -96,10 +96,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    //if(user) {
     const interval = setInterval(async () => {
       let alarms = await AsyncStorage.getItem('alarms')
-      console.log(alarms)
 
       if (alarms) {
         alarms = JSON.parse(alarms)
@@ -135,7 +133,6 @@ function App() {
 
             if (!sounded && nowHour >= time) {
               alarms[drug][time] = true
-              console.log('alarms')
 
               await AsyncStorage.setItem('alarms', JSON.stringify(alarms))
 
@@ -223,7 +220,6 @@ function App() {
 
         alarms[medication.drug._id] = newAlarms
       })
-     // console.log(alarms+ ' when retrieve medic')
 
       await AsyncStorage.setItem('alarms', JSON.stringify(alarms))
 
@@ -249,16 +245,18 @@ function App() {
       let keys = Object.keys(info);
 
       for (const key in info) {
-        if (key.includes('hour') && !isNaN(info[key]) && info[key] > 24)
+        if (typeof info[key] === 'undefined' || key.includes('hour') &&  !isNaN(info[key]) && info[key] > 24)
           throw new Error('Please, introduce a correct hour')
-        if (key.includes('min') && !isNaN(info[key]) && info[key] > 59)
+        if (typeof info[key] === 'undefined' || key.includes('min') && !isNaN(info[key]) && info[key] > 59)
           throw new Error('Please, introduce a correct minutes')
       }
 
       const times = []
 
       for (let i = 1; i < keys.length / 2 + 1; i++) {
-        times.push(`${info[`hour${i}`]}` + `${info[`min${i}`]}`);
+        if (info[`hour${i}`].length === 1) {info[`hour${i}`] = `0${info[`hour${i}`]}`}
+
+        times.push(`${info[`hour${i}`]}` + `${info[`min${i}`]}`)
       }
 
       await addMedication(drug, times)
@@ -273,7 +271,6 @@ function App() {
       
       const _drugDetail = await retrieveDrug(id)
       const {drugName} = _drugDetail
-      //pushNotification.localNotification(drugName)
 
       setTimes(times)
 
@@ -300,7 +297,7 @@ function App() {
 
       handleToMedication()
     } catch ({message}) {
-      console.log(message)
+      __handleError__(message)
     }
   }
 

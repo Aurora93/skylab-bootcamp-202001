@@ -3,7 +3,6 @@ import styles from './styles'
 import { Platform, View, Text, Linking, TextInput, ScrollView, Image, Button, TouchableOpacity} from 'react-native'
 
 function ContactDetail ({contactData}){
-    console.log(contactData)
     let {name, surname, phone, email} = contactData
 
     makeCall=()=>{
